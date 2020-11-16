@@ -2,9 +2,9 @@ Copyright (c) JB Stepan. 2020. All rights reserved.
 Copyright Lightbox Interactive, Inc. All rights reserved.
 
 Definitions:
-  "You/Player/End user" The end user of the product<br>
-  "We/Us/JB" The people or person who maintain, devolps and creates the product.<br>
-  "Triside" The product that this license governs.<br>
+  "You/Player/End user" The end user of the product.
+  "We/Us/JB" The people or person who maintain, devolps and creates the product.
+  "Triside" The product that this license governs.
 
 Section 1:
   We have 3 main terms that everyone must follow:
