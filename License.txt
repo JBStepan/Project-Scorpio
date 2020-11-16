@@ -1,0 +1,16 @@
+Copyright (c) JB Stepan. 2020. All rights reserved.
+Copyright Lightbox Interactive, Inc. All rights reserved.
+
+Definitions:
+  "You/Player/End user" The end user of the product<br>
+  "We/Us/JB" The people or person who maintain, devolps and creates the product.<br>
+  "Triside" The product that this license governs.<br>
+
+Section 1:
+  We have 3 main terms that everyone must follow:
+    1. Do not decompile, reverse engginer, sell, lease, rent or redistrubte the product, without permisson from us;
+    2. Do not commercial exploit the product;
+    3. Do not sell, cheats, expolits or modification's to the product, without permisson from us;
+
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
