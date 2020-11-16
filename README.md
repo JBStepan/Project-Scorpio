@@ -1,2 +1,2 @@
-# Triside-new
+# Triside
 Main source for Triside
