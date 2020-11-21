@@ -1,8 +1,12 @@
+# Copyright JB Stepan. 2020. All rights reserved
+# Please read License.md and Readme.md for more info
 extends Node
 
 class_name Weapon
 
 #export var owner : NodePath;
+export var ammo_label_path : NodePath;
+export var raycast_path : NodePath;
 export var weapon_name : String;
 export var fire_rate : float;
 export var clip_size : int;
@@ -13,6 +17,33 @@ export var reload_speed : float;
 export(int, "RIFLE", "PISTOL", "SNIPER") var weapon_type;
 #export(int, "COMMON", "UNIQUE", "RARE", "ULIMATE", "LEGENDARY", "CONVERT") var weapon_rarity;
 
-var current_ammp = clip_size;
+var current_ammo;
 var can_fire = true;
+
+var ammo_label : Label;
+var raycast : RayCast;
+
+func _ready()->void:
+	ammo_label = get_node(ammo_label_path);
+	raycast = get_node(raycast_path);
+	current_ammo = clip_size
+	
+func _fire(delta)->void:
+	pass
+	
+func _shoot(delta)->void:
+	pass
+
+func _reload(delta)->void:
+	pass
+
+func _aim(delta)->void:
+	pass
+	
+func _draw(delta)->void:
+	print(weapon_name + " equiped");
+	
+func _hide(delta)->void:
+	print(weapon_name + " unequiped");
+	
 

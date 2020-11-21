@@ -1,3 +1,8 @@
+# Copyright JB Stepan. 2020. All rights reserved
+# Please read License.md and Readme.md for more info
+# Copyright (c) 2020 Droivox
+# Under the MIT License
+# https://github.com/Droivox/Godot-Engine-FPS
 class WeaponNew:
 	var owner : Node;
 	var name : String;
@@ -21,4 +26,22 @@ class WeaponNew:
 		self.reload_speed = reload_speed;
 		self.type = type;
 		self.rarity = rarity;
+	
+	func _fire(delta)->void:
+		pass
+	
+	func _shoot(delta)->void:
+		pass
+	
+	func _reload(delta)->void:
+		pass
+	
+	func _aim(delta)->void:
+		pass
+		
+	func _draw(delta)->void:
+		print(name + " equiped");
+		
+	func _hide(delta)->void:
+		print(name + " unequiped");
 		

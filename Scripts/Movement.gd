@@ -7,17 +7,19 @@ extends KinematicBody;
 
 # Speed vars
 export var walk_speed : float = 6;
-export var sprint_speed : float = 9;
+export var sprint_speed : float = 10;
 export var crouch_speed : float = 3;
 export var normal_speed : float = 6;
+export var crawl_speed : float = 2
 
 # Physics Things
 export var gravity_force : float = 50;
 export var jump_force : float = 15;
 export var friction : float = 30;
 
-# My things
+# Trisde things
 export var player_name : String;
+export var player_detection : int = 80;
 
 # All vectors
 var velocity = Vector3();
@@ -26,7 +28,6 @@ var acceleration = Vector3();
 
 # Inputs
 var player_inputs : Dictionary = {};
-
 
 func _physics_process(_delta: float) -> void:
 	_move(_delta);
@@ -80,18 +81,18 @@ func _crouch(_delta) -> void:
 
 	# Get the character's head node
 	var head = $"Head";
-
-	# If the head node is not touching the ceiling
+		# If the head node is not touching the ceiling
 	if not head.is_colliding():
+			
 		# Takes the character collision node
 		var collision = $CollisionShape;
-
+	
 		# Get the character's collision shape
 		var shape = collision.shape.height;
-
+	
 		# Changes the shape of the character's collision
 		shape = lerp(shape, 2 - (player_inputs["crouch"] * 1.5), crouch_speed  * _delta);
-
+			
 		# Apply the new character collision shape
 		collision.shape.height = shape;
 

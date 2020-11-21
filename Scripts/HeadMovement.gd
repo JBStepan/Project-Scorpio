@@ -6,17 +6,23 @@
 extends Spatial;
 
 export var player_path : NodePath;
+export var cam_path : NodePath;
 export var sensitivity : float = 0.2;
 export var captured : bool = true;
 
-var player
+var player;
+var cam : Camera;
+
+var player_inputs : Dictionary = {};
 
 func _ready() -> void:
 	player = get_node(player_path);
+	cam = get_node(cam_path);
 	
 func _physics_process(_delta) -> void:
 	# Calls function to switch between locked and unlocked mouse
 	_mouse_toggle();
+	_zoom();
 	
 func _mouse_toggle() -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -26,7 +32,7 @@ func _mouse_toggle() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
-		
+
 func _cam_rotate(event) -> void:
 	# If the mouse is locked
 	if captured:
@@ -43,6 +49,17 @@ func _cam_rotate(event) -> void:
 		var max_angle: int = 85; # Maximum camera angle
 		camera[0].rotation.x = min(camera[0].rotation.x,  deg2rad(max_angle))
 		camera[0].rotation.x = max(camera[0].rotation.x, -deg2rad(max_angle))
+
+func _zoom():
+	player_inputs["zoom"] = int(Input.is_action_pressed("zoom"));
+
+	if player_inputs["zoom"]:
+		cam.fov -= 50;
+		sensitivity = 0.1;
+	else:
+		cam.fov = 70;
+		sensitivity = 0.2;
+	
 
 func _input(_event) -> void:
 	# Calls the function to rotate the camera
