@@ -1,6 +1,6 @@
 # Contribting
 
-## Way to write code
+### Way to write code
 ```gdscript
 func _something(type : float)->void:
 	pass;
