@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="Root" type="Spatial"]
+
+[node name="Infrastructure" type="Node" parent="."]
+
+[node name="Tranist" type="Node" parent="Infrastructure"]
+
+[node name="World Items" type="Node" parent="."]
+
+[node name="Buildings" type="Node" parent="."]

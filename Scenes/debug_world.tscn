@@ -1,11 +1,21 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Textures/Mats/Grid_Red.tres" type="Material" id=2]
 [ext_resource path="res://Textures/Mats/Grid.tres" type="Material" id=3]
 [ext_resource path="res://Textures/Mats/Grid_Light.tres" type="Material" id=4]
+[ext_resource path="res://Scenes/Fps.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Configs.gd" type="Script" id=6]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.403922, 0.392157, 0.392157, 1 )
 
 [node name="World" type="Spatial"]
+
+[node name="UtilThings" type="Node" parent="."]
+
+[node name="Configs" type="Node" parent="UtilThings"]
+script = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.166664, 6.11617, 0.946203 )
@@ -16,7 +26,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 [node name="CSGCombiner" type="CSGCombiner" parent="Level"]
 use_collision = true
 
-[node name="Floor" type="CSGBox" parent="Level/CSGCombiner"]
+[node name="Floor" type="CSGBox" parent="Level/CSGCombiner" groups=[
+"ground",
+"normal",
+]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 width = 100.0
 height = 1.0
@@ -35,7 +48,28 @@ height = 6.0
 depth = 14.0
 material = ExtResource( 2 )
 
+[node name="CSGBox" type="CSGBox" parent="Level/CSGCombiner" groups=[
+"metal",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.348359, 9.58042 )
+width = 8.0
+height = 0.603678
+material = SubResource( 1 )
+
 [node name="Sun" type="DirectionalLight" parent="Level"]
 transform = Transform( 1, 0, 0, 0, 0.796287, 0.604919, 0, -0.604919, 0.796287, 0, 25.1101, 43.861 )
 light_color = Color( 0.847059, 0.847059, 0.584314, 1 )
 light_indirect_energy = 4.0
+
+[node name="Hud" type="Node2D" parent="."]
+
+[node name="Fps" type="Label" parent="Hud"]
+margin_left = 9.0
+margin_top = 1.0
+margin_right = 1272.0
+margin_bottom = 15.0
+text = "FPS: "
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

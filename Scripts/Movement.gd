@@ -1,8 +1,13 @@
-# Copyright JB Stepan. 2020. All rights reserved
-# Please read License.md and Readme.md for more info
-# Copyright (c) 2020 Droivox
-# Under the MIT License
-# https://github.com/Droivox/Godot-Engine-FPS
+#
+# Movement.gd
+# ------------------
+# Part of the Triside
+# Copyright (c) 2020 JB Stepan. All Rights Reserved
+# Licensed under License.txt. License.txt for more info.
+#
+# TODO: 
+# NOTES:
+#
 extends KinematicBody;
 
 # Speed vars
@@ -34,6 +39,9 @@ func _physics_process(_delta: float) -> void:
 	_jump(_delta);
 	_crouch(_delta);
 	_sprint(_delta);
+
+func _enter_tree()->void:
+	Log.loadNote("Player has enter scene!");
 	
 func _move(_delta) -> void:
 	# Inputs
