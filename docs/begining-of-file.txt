@@ -7,8 +7,6 @@ GDSCRIPT:
 # Licensed under License.txt. License.txt for more info.
 #
 # TODO: 
-# NOTES:
-#
 
 C#:
 /*
@@ -19,5 +17,3 @@ C#:
 * Licensed under License.txt. License.txt for more info.
 */
 // TODO: 
-/* NOTES:
-*/
