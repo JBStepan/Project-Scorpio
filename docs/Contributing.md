@@ -43,7 +43,7 @@ public class Player : Node
 }
 ```
 When writing in C# for Triside, make sure to follow these basics:
-- Do not ever use space or _'s.
+- Do not ever use spaces or _'s.
 - When you write a comment, `// Hello, im a comment`, make sure you put a space between `//` and the comment body.
 - Cast variables, no `var SomeVariable;` instead `int SomeVariable;`.
 - When making variables always make sure the first letter of the variable is a capitol and every subsequent word in variable, like this `int SomeVariable;`.
@@ -62,3 +62,23 @@ public class Player : Node
 	}
 }
 ```
+When writing functions in C# for Triside, make to follow these basics:
+- Same with variables, always make sure the first letter of the variable is a capitol and every subsequent word in function.
+- Do not ever use spaces or _'s.
+
+### Comment things
+GDScript
+```gdscript
+# NOTE: Some Note
+# TODO: Some ToDo
+```
+C#
+```cs
+// NOTE: Some Note
+// TODO: Some ToDo
+```
+- TODO, todo's are something to do in future or something to fix.
+- NOTE, notes are like sticky notes, you hate them but you gotta have them
+
+### Why?
+All of this makes it easier to read and write
