@@ -26,6 +26,19 @@ When writing functions in GdScript for Triside, make to follow these basics:
 - Always cast the function as something, like `func _some_function()->void`.
 - If the function has parameters make sure to cast them as seomthing, like `func _some_function(parameter : float)->void`. 
 
+### Begining of files
+```gdscript
+#
+# FILENAME
+# ------------------
+# Part of the Triside
+# Copyright (c) 2020 JB Stepan. All Rights Reserved
+# Licensed under License.txt. License.txt for more info.
+#
+# TODO: 
+```
+- FILENAME, is the place where you put the filename and extension 
+
 ## C#
 ### Way to write code
 ```cs
