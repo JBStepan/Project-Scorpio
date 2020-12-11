@@ -5,9 +5,7 @@
 # Copyright (c) 2020 JB Stepan. All Rights Reserved
 # Licensed under License.txt. License.txt for more info.
 #
-# TODO: 
-# NOTES:
-#
+
 extends Label
 
 onready var fps_label = $".";
