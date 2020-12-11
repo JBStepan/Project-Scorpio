@@ -32,14 +32,13 @@ var weapon_inv : Dictionary = {};
 
 var weapon = load("res://Scripts/weapon.gd")
 
-var ar = weapon.weapon.new(self, "AR-15", 3.0, 32, 999, 33, 25, 1.5)
+#var ar = weapon.weapon.new(self, "AR-15", 3.0, 32, 999, 33, 25, 1.5)
 
 func _ready()->void:
 	gun1.visible = false;
 	gun2.visible = false;
 	gun2.visible = false;
-	weapon_inv["gun1"] = ar;
 	
-func _weapon(_delta)->void:
-	player_inputs["fire"] = int(Input.is_action_just_pressed("fire"));
+#func _weapon(_delta)->void:
+#	player_inputs["fire"] = int(Input.is_action_just_pressed("fire"));
 
