@@ -22,7 +22,6 @@ config/icon="res://icon.png"
 [autoload]
 
 Log="*res://Scripts/Logging/Logger.gd"
-Weapon="*res://Scripts/weapon.gd"
 
 [display]
 

@@ -30,7 +30,7 @@ onready var gun3 = $Gun3
 var player_inputs : Dictionary = {};
 var weapon_inv : Dictionary = {};
 
-var weapon = load("res://Scripts/weapon.gd")
+#var weapon = load("res://Scripts/weapon.gd")
 
 #var ar = weapon.weapon.new(self, "AR-15", 3.0, 32, 999, 33, 25, 1.5)
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scripts/Movement.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/HeadMovement.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/ShakeCam.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/Weapons.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/Feet.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Player/Movement.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Player/HeadMovement.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Player/ShakeCam.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Weapons/Weapons.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Player/Feet.gd" type="Script" id=5]
 [ext_resource path="res://Audio/metal.wav" type="AudioStream" id=6]
 [ext_resource path="res://Audio/normal.wav" type="AudioStream" id=7]
 
