@@ -82,16 +82,16 @@ When writing functions in C# for Triside, make to follow these basics:
 ### Comment things
 GDScript
 ```gdscript
-# NOTE: Some Note
+# NOTE(@YourName): Some Note
 # TODO: Some ToDo
 ```
 C#
 ```cs
-// NOTE: Some Note
+// NOTE(@YOURNAME): Some Note
 // TODO: Some ToDo
 ```
 - TODO, todo's are something to do in future or something to fix.
-- NOTE, notes are like sticky notes, you hate them but you gotta have them
+- NOTE, notes are like sticky notes, you hate them but you gotta have them. Replace `@YOURNAME` with you Github Name e.g, `# NOTE(@tonymoooon543): Some note!`, just so we know whos making the notes
 
 ### Why?
 All of this makes it easier to read and write
