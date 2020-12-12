@@ -93,7 +93,7 @@ C#
 ```
 - TODO, todo's are something to do in future or something to fix.
 - NOTE, notes are like sticky notes, you hate them but you gotta have them. Replace `@YOURNAME` with you Github Name e.g, 
-`# NOTE(@tonymoooon543): Some note!`, just so we know whos making the notes
+`# NOTE(@tonymoooon543): Some note!` or with your KNOWN preferred nickname, just so we know whos making the notes
 
 ### Why?
 All of this makes it easier to read and write
