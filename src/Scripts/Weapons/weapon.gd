@@ -15,3 +15,4 @@ class Gun:
 	var name : String;
 	var type : int;
 	
+	
