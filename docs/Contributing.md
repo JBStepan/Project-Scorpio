@@ -59,7 +59,8 @@ When writing in C# for Triside, make sure to follow these basics:
 - Do not ever use spaces or _'s.
 - When you write a comment, `// Hello, im a comment`, make sure you put a space between `//` and the comment body.
 - Cast variables, no `var SomeVariable;` instead `int SomeVariable;`.
-- When making variables always make sure the first letter of the variable is a capitol and every subsequent word in variable, like this `int SomeVariable;`.
+- When making variables always make sure the first letter of the variable is a capitol and every subsequent word in variable, like this, 
+`int SomeVariable;`.
 - Follow the [Godot Docs](https://docs.godotengine.org/en/stable/getting_started/scripting/c_sharp/index.html?highlight=c%23).
 
 ### Writing Functions
@@ -82,16 +83,17 @@ When writing functions in C# for Triside, make to follow these basics:
 ### Comment things
 GDScript
 ```gdscript
-# NOTE: Some Note
+# NOTE(@YourName): Some Note
 # TODO: Some ToDo
 ```
 C#
 ```cs
-// NOTE: Some Note
+// NOTE(@YOURNAME): Some Note
 // TODO: Some ToDo
 ```
 - TODO, todo's are something to do in future or something to fix.
-- NOTE, notes are like sticky notes, you hate them but you gotta have them
+- NOTE, notes are like sticky notes, you hate them but you gotta have them. Replace `@YOURNAME` with you Github Name e.g, 
+`# NOTE(@tonymoooon543): Some note!` or with your KNOWN preferred nickname, just so we know whos making the notes
 
 ### Why?
 All of this makes it easier to read and write
