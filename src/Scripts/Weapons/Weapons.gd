@@ -7,3 +7,4 @@
 #
 # TODO: Work on Weapon.gd
 
+extends Spatial;
