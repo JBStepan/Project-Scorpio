@@ -22,7 +22,7 @@ var mesh_lod0;
 var mesh_lod1;
 var mesh_lod2;
 
-func _ready():
+func _ready()->void:
 	if auto_detect_camera:
 	 camera = get_tree().get_root().find_node("Camera", true, false);
 	
@@ -40,13 +40,13 @@ func _ready():
 		
 	update_lod();
 	
-func _process(delta):
+func _process(delta)->void:
 	if enabled == false:
 		return;
 
 	update_lod();
 	
-func get_distance_to_camera() -> float:
+func get_distance_to_camera()->float:
 	var camera_translation = camera.get_global_transform().origin;
 	var object_translation = get_global_transform().origin;
 	
