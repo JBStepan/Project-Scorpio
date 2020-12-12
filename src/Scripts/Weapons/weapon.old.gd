@@ -5,9 +5,9 @@
 # Copyright (c) 2020 JB Stepan. All Rights Reserved
 # Licensed under License.txt. License.txt for more info.
 #
-# TODO: 
-# NOTES:
-#
+# TODO: Delete soon
+
+
 #extends Node
 #
 #class_name Weapon

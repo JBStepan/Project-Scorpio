@@ -1,3 +1,11 @@
+#
+# Pause.gd
+# ------------------
+# Part of the Triside
+# Copyright (c) 2020 JB Stepan. All Rights Reserved
+# Licensed under License.txt. License.txt for more info.
+#
+# TODO: I dont know why this does not work
 extends Control
 
 onready var resume_button = $CanvasLayer/Buttons/Resume
