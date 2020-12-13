@@ -1,4 +1,4 @@
-Main ref
+## Main reference 
 ```gdscript
 extends Node
 
@@ -57,7 +57,7 @@ func reload():
 	print("Reload complete")
 ```
 
-Other ref, can be useful
+## Other reference, can be useful
 ```gdscript
 class weapon:
 	var owner : Node;
@@ -248,7 +248,7 @@ class weapon:
 		mesh.rotation.x = lerp(mesh.rotation.x, 0, 5 * _delta);
 ```
 
-Also ref
+## Also reference
 ```gdscript
 extends Spatial
 
