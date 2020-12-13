@@ -13,12 +13,18 @@ extends KinematicBody;
 export var normal_speed : float = 08; # Normal
 export var sprint_speed : float = 12; # Sprint
 export var walk_speed : float = 08; # Walking
-export var crouch_speed : float = 05; # Crouch
+export var crouch_speed_movement : float = 05; # Crouch
+export var crouch_speed : float = 20;
+var current_speed
 
 # Physics vars
 export var gravity : float = 50; # Gravity force
 export var jump_height : float = 15; # Jump height
 export var friction : float = 25; # friction
+
+# Misc vars
+export var defualt_height = 1.5;
+export var crouch_height = 0.5;
 
 # All vectors
 var velocity : = Vector3(); # Velocity vector
@@ -68,18 +74,22 @@ func _move(_delta : float)->void:
 	velocity = move_and_slide(velocity, Vector3(0, 1, 0), false, 4, PI/4, false);
 
 func _crouch(_delta : float)->void:
-	# Inputs
 	input["crouch"] = int(Input.is_action_pressed("crouch"));
 	
-	# Get the character's head node
+	var collision = $"CollisionShape";
+	
 	var head = $"Head";
 	
 	if not head.is_colliding():
-		var collision = $"CollisionShape";
-		var shape = collision.shape.height;
-		shape = lerp(shape, 2 - (input["crouch"] * 1.5), crouch_speed  * _delta);
+		if input["crouch"]:
+			collision.shape.height -= crouch_speed * _delta;
+			normal_speed = crouch_speed_movement;
+		else:
+			collision.shape.height += crouch_speed * _delta;
+			normal_speed = normal_speed;
 		
-		collision.shape.height = shape;
+		collision.shape.height = clamp(collision.shape.height, 0.5, 2)
+		
 
 func _jump(_delta : float)->void:
 	# Inputs
