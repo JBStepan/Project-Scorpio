@@ -8,23 +8,16 @@
 # TODO: Work on the weapon class
 
 extends Node;
+class_name Gun
 
-class Gun:
-	var owner : Node;
-	var name : String;
-	var fire_rate : float;
-	var clip_size : int;
-	var ammo : int;
+var fire_rate : float;
+var clip_size : int;
+var ammo : int;
+
 	
-	func _init(Owner, Name, FireRate, ClipSize, Ammo):
-		self.owner = Owner;
-		self.name = Name;
-		self.fire_rate = FireRate;
-		self.clip_size = ClipSize;
-		self.ammo = Ammo;
+var ray = owner.get_node("RayCast");
 	
-	func _draw()->void:
-		print("Weapon drawn")
+var can_fire : bool = true;
+var reloading : bool = false;
 	
-	func _hide()->void:
-		print("Weapon hidden")
+
