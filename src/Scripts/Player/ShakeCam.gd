@@ -6,8 +6,6 @@
 # Licensed under License.txt. License.txt for more info.
 #
 # TODO: 
-# NOTES:
-#
 
 extends Camera 
 

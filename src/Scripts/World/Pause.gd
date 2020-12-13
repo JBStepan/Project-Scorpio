@@ -28,7 +28,7 @@ func _input(event):
 	if quit_button.pressed:
 		get_tree().quit()
 
-func _process_pause_menu():
+func _process_pause_menu()->void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	var pause_state = not get_tree().paused;
 	get_tree().paused = pause_state;

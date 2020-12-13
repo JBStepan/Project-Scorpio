@@ -6,8 +6,7 @@
 # Licensed under License.txt. License.txt for more info.
 #
 # TODO: 
-# NOTES:
-#
+
 extends Spatial;
 
 export var player_path : NodePath;

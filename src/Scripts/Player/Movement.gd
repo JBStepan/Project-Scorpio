@@ -6,49 +6,40 @@
 # Licensed under License.txt. License.txt for more info.
 #
 # TODO: 
-# NOTES:
-#
+
 extends KinematicBody;
 
 # Speed vars
-export var walk_speed : float = 6;
-export var sprint_speed : float = 10;
-export var crouch_speed : float = 3;
-export var normal_speed : float = 6;
-export var crawl_speed : float = 2
+export var normal_speed : float = 08; # Normal
+export var sprint_speed : float = 12; # Sprint
+export var walk_speed : float = 08; # Walking
+export var crouch_speed : float = 05; # Crouch
 
-# Physics Things
-export var gravity_force : float = 50;
-export var jump_force : float = 15;
-export var friction : float = 30;
-
-# Trisde things
-export var player_name : String;
-export var player_detection : int = 80;
+# Physics vars
+export var gravity : float = 50; # Gravity force
+export var jump_height : float = 15; # Jump height
+export var friction : float = 25; # friction
 
 # All vectors
-var velocity = Vector3();
-var direction = Vector3();
-var acceleration = Vector3();
+var velocity : = Vector3(); # Velocity vector
+var direction : = Vector3(); # Direction Vector
+var acceleration : = Vector3(); # Acceleration Vector
 
-# Inputs
-var player_inputs : Dictionary = {};
+# Character inputs
+var input : Dictionary = {};
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(_delta : float)->void:
 	_move(_delta);
-	_jump(_delta);
 	_crouch(_delta);
-	_sprint(_delta);
+	_jump(_delta);
+	_sprint(_delta)
 
-func _enter_tree()->void:
-	Log.loadNote("Player has enter scene!");
-	
-func _move(_delta) -> void:
+func _move(_delta : float)->void:
 	# Inputs
-	player_inputs["left"]   = int(Input.is_action_pressed("left"));
-	player_inputs["right"]  = int(Input.is_action_pressed("right"));
-	player_inputs["foward"] = int(Input.is_action_pressed("forword"));
-	player_inputs["back"]   = int(Input.is_action_pressed("backword"));
+	input["left"] = int(Input.is_action_pressed("left"));
+	input["right"] = int(Input.is_action_pressed("right"));
+	input["forward"] = int(Input.is_action_pressed("forword"));
+	input["back"] = int(Input.is_action_pressed("backword"));
 	
 	# Check is on floor
 	if is_on_floor():
@@ -57,11 +48,11 @@ func _move(_delta) -> void:
 		direction = direction.linear_interpolate(Vector3(), friction * _delta);
 		
 		# Applies gravity
-		velocity.y += -gravity_force * _delta;
+		velocity.y += -gravity * _delta;
 	
-	var basis = $Head.global_transform.basis;
-	direction += (-player_inputs["left"]    + player_inputs["right"]) * basis.x;
-	direction += (-player_inputs["foward"]  +  player_inputs["back"]) * basis.z;
+	var basis = $"Head".global_transform.basis;
+	direction += (-input["left"] + input["right"]) * basis.x;
+	direction += (-input["forward"] + input["back"]) * basis.z;
 	
 	direction.y = 0; direction = direction.normalized()
 	
@@ -75,46 +66,36 @@ func _move(_delta) -> void:
 	
 	# Calls the motion function by passing the velocity vector
 	velocity = move_and_slide(velocity, Vector3(0, 1, 0), false, 4, PI/4, false);
-	
-func _jump(_delta):
-	player_inputs["jump"] = int(Input.is_action_just_pressed("jump"));
-	
-	if player_inputs["jump"]:
-		if is_on_floor():
-			velocity.y = jump_force;
 
-func _crouch(_delta) -> void:
+func _crouch(_delta : float)->void:
 	# Inputs
-	player_inputs["crouch"] = int(Input.is_action_pressed("crouch"));
-
+	input["crouch"] = int(Input.is_action_pressed("crouch"));
+	
 	# Get the character's head node
 	var head = $"Head";
-		# If the head node is not touching the ceiling
+	
 	if not head.is_colliding():
-			
-		# Takes the character collision node
-		var collision = $CollisionShape;
-	
-		# Get the character's collision shape
+		var collision = $"CollisionShape";
 		var shape = collision.shape.height;
-	
-		# Changes the shape of the character's collision
-		shape = lerp(shape, 2 - (player_inputs["crouch"] * 1.5), crouch_speed  * _delta);
-			
-		# Apply the new character collision shape
+		shape = lerp(shape, 2 - (input["crouch"] * 1.5), crouch_speed  * _delta);
+		
 		collision.shape.height = shape;
 
-func _sprint(_delta) -> void:
+func _jump(_delta : float)->void:
 	# Inputs
-	player_inputs["sprint"] = int(Input.is_action_pressed("sprint"));
+	input["jump"] = int(Input.is_action_pressed("jump"));
 	
-	# Make the character sprint
-	if not player_inputs["crouch"]: # If you are not crouching
-		# switch between sprint and walking
-		var toggle_speed : float = walk_speed + ((sprint_speed - walk_speed) * player_inputs["sprint"])
+	if input["jump"]:
+		if is_on_floor():
+			velocity.y = jump_height;
+
+func _sprint(_delta : float)->void:
+	# Inputs
+	input["sprint"] = int(Input.is_action_pressed("sprint"));
+	
+	if not input["crouch"]: # If you are not crouching
+		var toggle_speed : float = walk_speed + ((sprint_speed - walk_speed) * input["sprint"])
 		
-		# Create a character speed interpolation
 		normal_speed = lerp(normal_speed, toggle_speed, 3 * _delta);
 	else:
-		# Create a character speed interpolation
 		normal_speed = lerp(normal_speed, walk_speed, _delta);
