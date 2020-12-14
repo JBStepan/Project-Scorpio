@@ -195,7 +195,7 @@ func _unhandled_input(event):
 					current = 1;
 				if event.scancode == KEY_3:
 					current = 2;
-#################
+#########################################################################################################################################################
 func _shoot(_delta) -> void:
 		# Get audio node
 		var audio = owner.get_node("{}/audio".format([name], "{}"));
