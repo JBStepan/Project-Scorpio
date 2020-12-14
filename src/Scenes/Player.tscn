@@ -51,7 +51,7 @@ gun2_path = NodePath("Gun2")
 visible = false
 script = ExtResource( 4 )
 fire_rate = 0.2
-clip_size = 5
+clip_size = 12
 reload_rate = 0.3
 damage = 2.0
 raycast_path = NodePath("../..")
@@ -69,6 +69,7 @@ fire_rate = 0.5
 clip_size = 16
 reload_rate = 3.2
 damage = 5.0
+can_hold = true
 raycast_path = NodePath("../..")
 weapon_name = "Gun2"
 
