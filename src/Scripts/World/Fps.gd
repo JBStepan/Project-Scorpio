@@ -13,6 +13,6 @@ onready var fps_label = $".";
 
 func _ready()->void:
 	pass;
-func _process(delta):
+func _process(_delta):
 	var fps = str(Engine.get_frames_per_second());
 	fps_label.text = "FPS: " + fps;

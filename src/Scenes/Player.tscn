@@ -1,15 +1,22 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Player/Movement.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player/HeadMovement.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Player/ShakeCam.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/Weapons/Weapons.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/Player/Feet.gd" type="Script" id=5]
-[ext_resource path="res://Audio/metal.wav" type="AudioStream" id=6]
-[ext_resource path="res://Audio/normal.wav" type="AudioStream" id=7]
+[ext_resource path="res://Scripts/Weapons/weapon.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 2.0
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 1, 0, 0, 1 )
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -25,6 +32,8 @@ cast_to = Vector3( 0, 1.5, 0 )
 script = ExtResource( 2 )
 player_path = NodePath("..")
 cam_path = NodePath("Neck/Camera")
+gun1_path = NodePath("Weapons/Gun1")
+gun2_path = NodePath("Weapons/Gun2")
 
 [node name="Neck" type="Spatial" parent="Head"]
 
@@ -32,39 +41,34 @@ cam_path = NodePath("Neck/Camera")
 script = ExtResource( 3 )
 
 [node name="Weapons" type="Spatial" parent="Head"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.518944, -0.476239, 0 )
-script = ExtResource( 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.655224, 0.629, -0.48558, -1.24031 )
 
 [node name="Gun1" type="Spatial" parent="Head/Weapons"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23958, -0.54316 )
+visible = false
+script = ExtResource( 4 )
+fire_rate = 2.0
+clip_size = 5
+reload_rate = 0.3
+damage = 2.0
+raycast_path = NodePath("../..")
+weapon_name = "Google"
+
+[node name="MeshInstance" type="MeshInstance" parent="Head/Weapons/Gun1"]
+transform = Transform( 0.0825461, 0, 0, 0, 0.150754, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
 
 [node name="Gun2" type="Spatial" parent="Head/Weapons"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23958, -0.54316 )
+visible = false
+script = ExtResource( 4 )
+fire_rate = 1.0
+clip_size = 16
+reload_rate = 3.2
+damage = 5.0
+raycast_path = NodePath("../..")
+weapon_name = "Gun2"
 
-[node name="Gun3" type="Spatial" parent="Head/Weapons"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23958, -0.54316 )
-
-[node name="Feet" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.64, 0 )
-enabled = true
-cast_to = Vector3( 0, -2, 0 )
-script = ExtResource( 5 )
-feet = NodePath(".")
-character = NodePath("..")
-
-[node name="Audios" type="Spatial" parent="Feet"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36, 0 )
-
-[node name="metal" type="Spatial" parent="Feet/Audios" groups=[
-"metal",
-]]
-
-[node name="metal" type="AudioStreamPlayer3D" parent="Feet/Audios/metal"]
-stream = ExtResource( 6 )
-
-[node name="Spatial" type="Spatial" parent="Feet/Audios" groups=[
-"metal",
-]]
-
-[node name="normal" type="AudioStreamPlayer3D" parent="Feet/Audios/Spatial"]
-stream = ExtResource( 7 )
+[node name="MeshInstance" type="MeshInstance" parent="Head/Weapons/Gun2"]
+transform = Transform( 0.075831, 0, 0, 0, 0.0879054, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
