@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "SaveGame",
+"language": "GDScript",
+"path": "res://Scripts/SaveGame/SaveGame.gd"
+}, {
 "base": "Node",
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://Scripts/Weapons/weapon.gd"
 } ]
 _global_script_class_icons={
+"SaveGame": "",
 "Weapon": ""
 }
 
@@ -23,6 +29,8 @@ _global_script_class_icons={
 config/name="Triside"
 run/main_scene="res://Scenes/debug_world.tscn"
 config/icon="res://icon.png"
+config/version="0.0.1"
+config/save_game_loc=""
 
 [autoload]
 
@@ -119,11 +127,9 @@ hide_weapon={
  ]
 }
 
-[jblogging]
+[logging]
 
-config/enable_logging=true
-config/log_path="user://TrisideLogs/log.txt"
-config/max_log_files=10
+file_logging/enable_file_logging=true
 
 [rendering]
 

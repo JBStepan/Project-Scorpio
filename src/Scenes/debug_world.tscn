@@ -57,7 +57,7 @@ height = 0.603678
 material = SubResource( 1 )
 
 [node name="Sun" type="DirectionalLight" parent="Level"]
-transform = Transform( 1, 0, 0, 0, 0.796287, 0.604919, 0, -0.604919, 0.796287, 0, 25.1101, 43.861 )
+transform = Transform( 1, 0, 0, 0, 0.76931, 0.638875, 0, -0.638875, 0.76931, 0, 25.1101, 43.861 )
 light_color = Color( 0.847059, 0.847059, 0.584314, 1 )
 light_indirect_energy = 4.0
 

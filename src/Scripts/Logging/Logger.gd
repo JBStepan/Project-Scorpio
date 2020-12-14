@@ -10,8 +10,8 @@
 #
 extends Node
 
-func loadNote(message):
-	if ProjectSettings.get_setting("jblogging/config/enable_logging") == true:
+func _log_note(message : String)->bool:
+	if ProjectSettings.get_setting("") == true:
 		# Get datetime to dictionary
 		var dt=OS.get_datetime()
 		# Format and print with message
