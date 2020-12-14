@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Player/Movement.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player/HeadMovement.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Player/ShakeCam.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Weapons/weapon.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Weapons/Weapons.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 2.0
@@ -42,11 +43,14 @@ script = ExtResource( 3 )
 
 [node name="Weapons" type="Spatial" parent="Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.655224, 0.629, -0.48558, -1.24031 )
+script = ExtResource( 5 )
+gun1_path = NodePath("Gun1")
+gun2_path = NodePath("Gun2")
 
 [node name="Gun1" type="Spatial" parent="Head/Weapons"]
 visible = false
 script = ExtResource( 4 )
-fire_rate = 2.0
+fire_rate = 0.2
 clip_size = 5
 reload_rate = 0.3
 damage = 2.0
@@ -61,7 +65,7 @@ material/0 = SubResource( 3 )
 [node name="Gun2" type="Spatial" parent="Head/Weapons"]
 visible = false
 script = ExtResource( 4 )
-fire_rate = 1.0
+fire_rate = 0.5
 clip_size = 16
 reload_rate = 3.2
 damage = 5.0

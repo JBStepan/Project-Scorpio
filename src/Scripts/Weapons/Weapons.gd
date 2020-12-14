@@ -17,18 +17,18 @@ func _process(delta):
 
 func weapon_select():
 	if Input.is_action_just_pressed("gun1"):
-		current_weapon == 1
+		current_weapon = 1
 	elif Input.is_action_just_pressed("gun2"):
-		current_weapon == 2
+		current_weapon = 2
 
 	if current_weapon == 1:
 		gun1.visible = true
-		#gun1._process_gun();
+		gun1._process_gun();
 	else:
 		gun1.visible = false
 
 	if current_weapon == 2:
 		gun2.visible = true
-		#gun2._process_gun();
+		gun2._process_gun();
 	else:
 		gun2.visible = false
