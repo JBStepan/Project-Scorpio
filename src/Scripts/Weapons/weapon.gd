@@ -20,7 +20,7 @@ var current_ammo = 0
 var can_fire = true
 var reloading = false
 
-var raycast : RayCast;
+var raycast;
 
 func _ready():
 	current_ammo = clip_size
