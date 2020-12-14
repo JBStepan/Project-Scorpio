@@ -8,3 +8,7 @@
 # TODO: Work on Weapon.gd
 
 extends Spatial;
+
+# class func _init(owner : Node, name : String, firerate : float, bullets : int, ammo : int, max_bullets : int, damage : float, reload_speed : float, Raycast : RayCast) -> void:
+
+
