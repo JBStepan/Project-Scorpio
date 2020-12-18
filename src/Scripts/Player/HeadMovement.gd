@@ -16,8 +16,8 @@ export var captured : bool = true;
 export var gun1_path : NodePath;
 export var gun2_path : NodePath;
 
-var gun1 : Spatial;
-var gun2 : Spatial;
+var gun1;
+var gun2;
 var player;
 var cam : Camera;
 
@@ -35,7 +35,6 @@ func _physics_process(_delta) -> void:
 	# Calls function to switch between locked and unlocked mouse
 	_mouse_toggle();
 	_zoom();
-	weapon_select();
 	
 func _mouse_toggle() -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -77,21 +76,3 @@ func _zoom():
 func _input(_event) -> void:
 	# Calls the function to rotate the camera
 	_cam_rotate(_event);
-
-func weapon_select():
-	if Input.is_action_just_pressed("gun1"):
-		current_weapon = 1
-	elif Input.is_action_just_pressed("gun2"):
-		current_weapon = 2
-
-	if current_weapon == 1:
-		gun1.visible = true
-		gun1._process_gun();
-	else:
-		gun1.visible = false
-
-	if current_weapon == 2:
-		gun2.visible = true
-		gun2._process_gun();
-	else:
-		gun2.visible = false

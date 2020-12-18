@@ -12,7 +12,7 @@ func _ready():
 	gun1 = get_node(gun1_path);
 	gun2 = get_node(gun2_path);
 
-func _process(delta):
+func _process(_delta):
 	weapon_select();
 
 func weapon_select():
@@ -23,12 +23,18 @@ func weapon_select():
 
 	if current_weapon == 1:
 		gun1.visible = true
-		gun1._process_gun();
+		if(gun1.has_method("_process_gun")):
+			gun1._process_gun();
+		else:
+			print("Unable to find weapon method")
 	else:
 		gun1.visible = false
 
 	if current_weapon == 2:
 		gun2.visible = true
-		gun2._process_gun();
+		if(gun2.has_method("_process_gun")):
+			gun2._process_gun();
+		else:
+			print("Unable to find weapon method")
 	else:
 		gun2.visible = false

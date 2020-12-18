@@ -12,14 +12,22 @@ extends Node
 class_name Weapon
 
 export var fire_rate : float;
+export var hold_fire_rate : float;
 export var clip_size :int;
 export var reload_rate : float;
 export var damage : float;
 export var can_hold : bool = false;
 export var raycast_path : NodePath;
+
+# Enums
+enum WeaponType { RIFLE, SNIPER, SMG, LMG, PISTOL }
+enum Rarity { COMMON, UNCOMMON, RARE, ULTIMATE, LEGENDARY, EXOTIC }
+
+# Triside Vars
+export(WeaponType) var weapon_type;
+export(Rarity) var rarity;
 export var weapon_name : String;
 export(String, MULTILINE) var weapon_desc
-
 
 var current_ammo = 0;
 var can_fire = true;
@@ -32,20 +40,13 @@ func _ready():
 	raycast = get_node(raycast_path);
 	
 func _process_gun():
-	if Input.is_action_pressed("fire") and can_fire and can_hold:
-		yield(get_tree().create_timer(fire_rate), "timeout");
-#		if current_ammo > 0 and not reloading:
-		fire();
-#		elif not reloading:
-#			reload();
-	
 	if Input.is_action_just_pressed("fire") and can_fire:
 		if current_ammo > 0 and not reloading:
 			fire();
 		elif not reloading:
 			reload();
 	
-	if Input.is_action_just_pressed("reload") and not reloading:
+	if Input.is_action_just_pressed("reload") and not reloading and current_ammo < clip_size:
 		reload();
 
 func check_collision():
@@ -57,7 +58,7 @@ func check_collision():
 			print("Hit Nothing!");
 
 func fire():
-	print("Fired weapon" + weapon_name);
+	print("Fired weapon " + weapon_name);
 	can_fire = false;
 	current_ammo -= 1;
 	yield(get_tree().create_timer(fire_rate), "timeout");
@@ -65,6 +66,8 @@ func fire():
 
 func reload():
 	reloading = true;
+	print("Reloading weapon " + weapon_name)
 	yield(get_tree().create_timer(reload_rate), "timeout");
 	current_ammo = clip_size;
+	print("Done reloading weapon" + weapon_name)
 	reloading = false;

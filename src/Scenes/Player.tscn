@@ -1,23 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player/Movement.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player/HeadMovement.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Player/ShakeCam.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/Weapons/weapon.gd" type="Script" id=4]
+[ext_resource path="res://Weapons/Guns/Rifles/Basic-Gun-1-debug.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Weapons/Weapons.gd" type="Script" id=5]
+[ext_resource path="res://Weapons/Guns/Rifles/Basic-Gun-2-debug.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 2.0
-
-[sub_resource type="CubeMesh" id=2]
-
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="CubeMesh" id=4]
-
-[sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 1, 0, 0, 1 )
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -44,36 +35,16 @@ script = ExtResource( 3 )
 [node name="Weapons" type="Spatial" parent="Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.655224, 0.629, -0.48558, -1.24031 )
 script = ExtResource( 5 )
-gun1_path = NodePath("Gun1")
-gun2_path = NodePath("Gun2")
+gun1_path = NodePath("Gun1/Basic-Gun-1-Debug")
+gun2_path = NodePath("Gun2/Basic-Gun-2-Debug")
 
 [node name="Gun1" type="Spatial" parent="Head/Weapons"]
-visible = false
-script = ExtResource( 4 )
-fire_rate = 0.2
-clip_size = 12
-reload_rate = 0.3
-damage = 2.0
-raycast_path = NodePath("../..")
-weapon_name = "Google"
 
-[node name="MeshInstance" type="MeshInstance" parent="Head/Weapons/Gun1"]
-transform = Transform( 0.0825461, 0, 0, 0, 0.150754, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
+[node name="Basic-Gun-1-Debug" parent="Head/Weapons/Gun1" instance=ExtResource( 4 )]
+clip_size = 3
 
 [node name="Gun2" type="Spatial" parent="Head/Weapons"]
-visible = false
-script = ExtResource( 4 )
-fire_rate = 0.5
-clip_size = 16
-reload_rate = 3.2
-damage = 5.0
-can_hold = true
-raycast_path = NodePath("../..")
-weapon_name = "Gun2"
 
-[node name="MeshInstance" type="MeshInstance" parent="Head/Weapons/Gun2"]
-transform = Transform( 0.075831, 0, 0, 0, 0.0879054, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+[node name="Basic-Gun-2-Debug" parent="Head/Weapons/Gun2" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.39673 )
+raycast_path = NodePath("../Basic-Gun-2-Debug/RayCast")
