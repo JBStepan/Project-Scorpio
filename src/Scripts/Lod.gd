@@ -1,3 +1,17 @@
+#
+# Lod.gd
+# ------------------
+# Part of the Triside
+# Copyright (c) 2020 JB Stepan. All Rights Reserved
+# Licensed under License.txt. License.txt for more info.
+#
+# TODO: 
+
+# NOTE(@ JB Stepan): Why this script? Doesnt godot already have LOD support?
+# Godot does have LOG support built in, but it is limited from what I have tested. You can only have 2 meshs, the main hight poly one and the low poly one, there is no inbetween.
+# So this script adds another 3 mesh for a transion mesh
+# This script can be added on to if needed
+
 extends Spatial;
 
 # LOD nodes
