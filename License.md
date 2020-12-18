@@ -1,3 +1,4 @@
+Triside License
 ```
 Copyright (c) JB Stepan. 2020. All rights reserved.
 Copyright (c) Lightbox Interactive, Inc. All rights reserved.
