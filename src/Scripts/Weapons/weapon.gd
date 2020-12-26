@@ -11,7 +11,8 @@ extends Node
 
 class_name Weapon
 
-export var weapon_file : String;
+export var debug_name : String
+export(String, FILE, '*.weapon') var weapon_file
 export var fire_rate : float;
 export var hold_fire_rate : float;
 export var clip_size :int;
@@ -38,16 +39,9 @@ var raycast : RayCast;
 
 func _ready():
 	if weapon_file != "":
-		var config = ConfigFile.new()
-		var err = config.load(weapon_file)
-		if err == OK: # If not, something went wrong with the file loading
-			# Look for the display/width pair, and default to 1024 if missing
-			weapon_name = config.get_value("Weapon", "name");
-			fire_rate = config.get_value("Weapon", "firerate", 1);
-			hold_fire_rate = config.get_value("Weapon", "holdfirerate", 0);
-			clip_size = config.get_value("Weapon", "clipsize", 5);
-			reload_rate = config.get_value("Weapon", "reloadrate", 1);
-			damage = config.get_value("Weapon", "damage", 1);
+		_read_weapon_file(weapon_file)
+	else:
+		print("No weapon file defined")
 	
 	current_ammo = clip_size;
 	raycast = get_node(raycast_path);
@@ -84,3 +78,24 @@ func reload():
 	current_ammo = clip_size;
 	print("Done reloading weapon" + weapon_name)
 	reloading = false;
+
+# Reads the .weapon file given to it.
+func _read_weapon_file(weaponfile):
+	var config = ConfigFile.new()
+	var err = config.load(weaponfile)
+	
+	var weapon_file_type = config.get_value("Weapon", "type");
+	
+	# If type in the .weapon file is gun, then read the variables in the file, else, print an error
+	if weapon_file_type == "gun":
+		if err == OK: # If not, something went wrong with the file loading
+			weapon_name = config.get_value("Weapon", "name");
+			fire_rate = config.get_value("Weapon", "firerate");
+			hold_fire_rate = config.get_value("Weapon", "holdfirerate");
+			clip_size = config.get_value("Weapon", "clipsize");
+			reload_rate = config.get_value("Weapon", "reloadrate");
+			damage = config.get_value("Weapon", "damage");
+		else:
+			print("Something went wrong loading file " + weapon_file)
+	else:
+		print("Weapon type is not accepted!")

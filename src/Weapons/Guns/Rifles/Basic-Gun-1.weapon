@@ -1,9 +1,9 @@
 [Weapon]
-type = gun
+type = "gun"
 debugname = "basicgun1"
-name = "Basic Gun 1"
+name = "Google Gun"
 firerate = 1
 holdfirerate = 0
-clipsize = 3
+clipsize = 4
 reloadrate = 1.5
 damage = 10

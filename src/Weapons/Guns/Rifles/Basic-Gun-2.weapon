@@ -1,5 +1,5 @@
 [Weapon]
-type = gun
+type = "gun"
 debugname = "basicgun2"
 name = "Basic Gun 2"
 firerate = 1.3
