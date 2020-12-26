@@ -25,5 +25,9 @@ damage = 10
   - `damage` - The amount of damage the weapon does.
 - Melee
   - TBD
+
+### How `.weapon` files interact with the game
+  `.weapon` files interact with the game by overriding any defined variables in the editor. For example,<br>
+Guns havs the variable `firerate`. If you do not define a weapon file for the weapon to read from, then it will defualt to what has been defined in the editor. <br>So if in the editor `firerate` is defined as `2` and we give it no weapon file to read from, then it will use what has been defined in the editor. Which is 2.
   
 > Note: I might be changing theses in the future to `.object` or `.triside` files.
