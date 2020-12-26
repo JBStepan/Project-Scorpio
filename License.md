@@ -1,7 +1,20 @@
-## Triside License
+## Current Triside License
 ```
 Copyright (c) JB Stepan. 2020. All rights reserved.
-Copyright (c) Lightbox Interactive, Inc. All rights reserved.
+
+Terms:
+1.) Do not try to recreate Triside using the source code or any other way, without permisson from me.
+2.) Do not try to sell Triside for any monetary value or otherwise, without my permisson.
+3.) Do not try to recreate Triside and sell it, without my permisson.
+4.) You can use Triside as a reference for making your own games.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+
+## Potential Triside License
+```
+Copyright (c) JB Stepan. 2020. All rights reserved.
 
 Definitions:
   "You/Player/End user" The end user of the product.
