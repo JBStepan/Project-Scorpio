@@ -1,4 +1,5 @@
 [Weapon]
+type = gun
 name = "Basic Gun 1"
 firerate = 1
 holdfirerate = 0

@@ -1,5 +1,6 @@
 [Weapon]
-name = "Basic Gun 1"
+type = gun
+name = "Basic Gun 2"
 firerate = 1.3
 holdfirerate = 0
 clipsize = 2
