@@ -2,7 +2,7 @@
 In Triside we use `.weapon` files to define the variables of a weapon like, damage or the name. The structure of `.weapon` files are as follow
 ```ini
 [Weapon]
-type = gun
+type = "gun"
 name = "Basic Gun 1"
 debugname = "basicgun1"
 firerate = 1
