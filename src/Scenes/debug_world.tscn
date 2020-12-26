@@ -64,10 +64,10 @@ light_indirect_energy = 4.0
 [node name="Hud" type="Node2D" parent="."]
 
 [node name="Fps" type="Label" parent="Hud"]
-margin_left = 9.0
-margin_top = 1.0
-margin_right = 1272.0
-margin_bottom = 15.0
+margin_left = 1211.29
+margin_top = 2.18921
+margin_right = 2474.29
+margin_bottom = 16.1892
 text = "FPS: "
 script = ExtResource( 5 )
 __meta__ = {

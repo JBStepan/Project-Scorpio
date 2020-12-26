@@ -11,12 +11,13 @@ extends Node
 
 class_name Weapon
 
+export var weapon_file : String;
 export var fire_rate : float;
 export var hold_fire_rate : float;
 export var clip_size :int;
 export var reload_rate : float;
 export var damage : float;
-export var can_hold : bool = false;
+export var can_hold : bool;
 export var raycast_path : NodePath;
 
 # Enums
@@ -36,6 +37,18 @@ var reloading = false;
 var raycast : RayCast;
 
 func _ready():
+	if weapon_file != "":
+		var config = ConfigFile.new()
+		var err = config.load(weapon_file)
+		if err == OK: # If not, something went wrong with the file loading
+			# Look for the display/width pair, and default to 1024 if missing
+			weapon_name = config.get_value("Weapon", "name");
+			fire_rate = config.get_value("Weapon", "firerate", 1);
+			hold_fire_rate = config.get_value("Weapon", "holdfirerate", 0);
+			clip_size = config.get_value("Weapon", "clipsize", 5);
+			reload_rate = config.get_value("Weapon", "reloadrate", 1);
+			damage = config.get_value("Weapon", "damage", 1);
+	
 	current_ammo = clip_size;
 	raycast = get_node(raycast_path);
 	

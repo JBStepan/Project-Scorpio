@@ -1,0 +1,7 @@
+[Weapon]
+name = "Basic Gun 1"
+firerate = 1
+holdfirerate = 0
+clipsize = 3
+reloadrate = 1.5
+damage = 10
