@@ -1,4 +1,9 @@
 # This is a simple script that updates .gd files for Godot 4.0
+# Note: Not everything can be changed, some have to be changed manually
+# Read These:
+# https://github.com/godotengine/godot/issues/20318
+# https://github.com/godotengine/godot/issues/16863
+
 rootWords = ["Spatial"]
 
 # The syntax from Godot 4
