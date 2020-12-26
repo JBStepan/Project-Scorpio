@@ -3,4 +3,4 @@ This folder will hold all of the documention of Triside Sytems/Part like, Weapon
 
 ### Table of Contents
 - Weapons
-  - Guns
+  - [Guns](https://github.com/tonymoooon543/Triside/tree/main/docs/Systems/Weapons)
