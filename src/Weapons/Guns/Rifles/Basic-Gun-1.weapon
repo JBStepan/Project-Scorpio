@@ -1,5 +1,6 @@
 [Weapon]
 type = gun
+debugname = "basicgun1"
 name = "Basic Gun 1"
 firerate = 1
 holdfirerate = 0
