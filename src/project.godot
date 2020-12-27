@@ -9,19 +9,19 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Spatial",
+"class": "Gun",
+"language": "GDScript",
+"path": "res://Scripts/Weapons/weapon.gd"
+}, {
 "base": "Resource",
 "class": "SaveGame",
 "language": "GDScript",
 "path": "res://Scripts/SaveGame/SaveGame.gd"
-}, {
-"base": "Node",
-"class": "Weapon",
-"language": "GDScript",
-"path": "res://Scripts/Weapons/weapon.gd"
 } ]
 _global_script_class_icons={
-"SaveGame": "",
-"Weapon": ""
+"Gun": "",
+"SaveGame": ""
 }
 
 [application]
