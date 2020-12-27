@@ -1,8 +1,11 @@
 # Whenever a push is made to the master branch then run the job
 on: 
-  schedule:
+  #schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 1 * * 0,3,5'
+    #- cron:  '0 1 * * 0,3,5'
+  push:
+    branches: 
+      - master
 
 jobs:
   # job id, can be anything
