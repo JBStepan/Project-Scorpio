@@ -1,25 +1,39 @@
 @echo off
 
+rem Requirements
+rem Python, Godot 3.2.2 and a copy of Triside source code
+
+echo Triside Shell                                       
+echo Version 1.0.0                                       
+echo Created by JB Stepan                                
+echo Part of the Triside Game                            
+echo Copyright (c) 2020. JB Stepan. All rights reserved. 
+echo ----------------------------------------------------
+
 set /p input="Triside Shell > "
 if %input% == --help goto help
 if %input% == --export goto export
 if %input% == --quit goto quit
 if %input% == --about goto about
+if %input% == --update goto update
 if %input% == -h goto help
 if %input% == -e goto export
 if %input% == -q goto quit
 if %input% == -a goto about
+if %input% == -u goto update
 
 :help
-echo ------------------------------
-echo - Triside Shell Commands     -
-echo - --help - Gives you this    -
-echo - --export - Exports Triside -
-echo - --quit - Quits the shell   -
-echo - -h - Gives you this        -
-echo - -e - Exports Triside       -
-echo - -q - Quits the shell       -
-echo ------------------------------
+echo --------------------------------------
+echo - Triside Shell Commands             -
+echo - --help - Gives you this            -
+echo - --export - Exports Triside         -
+echo - --quit - Quits the shell           -
+echo - --update - Update a GD file to 4.0 -
+echo - -h - Gives you this                -
+echo - -e - Exports Triside               -
+echo - -q - Quits the shell               -
+echo - -u - Update a GD file to 4.0       -
+echo --------------------------------------
 goto shellinput
 
 :shellinput
@@ -28,10 +42,12 @@ if %input% == --help goto help
 if %input% == --export goto export
 if %input% == --quit goto quit
 if %input% == --about goto about
+if %input% == --update goto update
 if %input% == -h goto help
 if %input% == -e goto export
 if %input% == -q goto quit
 if %input% == -a goto about
+if %input% == -u goto update
 
 :: Shell inputs things
 
@@ -48,6 +64,13 @@ if %input% == -a goto about
 	echo - Copyright (c) 2020. JB Stepan. All rights reserved. -
 	echo -------------------------------------------------------
 	goto shellinput
+
+:: GDScript updates
+
+:update
+set /p file_to_change="File > "
+python Update.py %file_to_change%
+goto shellinput
 
 :: Exports
 :export

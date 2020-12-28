@@ -19,7 +19,7 @@ with open(fileName) as main:
         fileContents = main.read()
         for old in rootWords:
             for new in newWords:
-                print(f"Found {old} replaced with {new}!" )
+                print(f"Found replace {old} replaced with {new}!" )
                 fileContents = fileContents.replace(old, new)
 
         output.write(fileContents)
