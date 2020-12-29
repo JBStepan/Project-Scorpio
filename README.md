@@ -7,6 +7,9 @@ A: Idk, I dont think this game will take off, if it does I will take it private,
 <br>
 Q: Why are you making this?<br>
 A: Its more about what I can do and its just fun!<br>
+<br>
+Q: Why did you pick [Godot](https://godotengine.org/)?<br>
+A: One of the reasons is its very easy to get the hang of, in my opinion. Also with my ADHD, it makes more sense in my brain. Nodes and the hierarchy of them just makes way more sense to me than Unity or Unreal.
 
 
 The Trello [Board](https://trello.com/b/zjyUZRBZ/triside)<BR>
