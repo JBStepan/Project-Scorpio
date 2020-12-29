@@ -1,5 +1,5 @@
 #
-# SaveGame.gd
+# FILENAME
 # ------------------
 # Part of the Triside
 # Copyright (c) 2020 JB Stepan. All Rights Reserved
@@ -7,10 +7,12 @@
 #
 # TODO: 
 
-extends Resource
-class_name SaveGame
+extends Spatial
 
-signal game_saved(save_file);
 
-export var game_version : String;
-export var data : Dictionary = {};
+func _ready():
+	pass
+
+
+func _on_BasicGun1Debug_weapon_fired(weapon_name):
+	

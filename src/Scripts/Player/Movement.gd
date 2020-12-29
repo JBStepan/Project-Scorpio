@@ -9,6 +9,12 @@
 
 extends KinematicBody;
 
+# Signals
+signal player_move();
+signal player_jump();
+signal player_crouch();
+signal player_sprint();
+
 # Speed vars
 export var normal_speed : float = 08; # Normal
 export var sprint_speed : float = 12; # Sprint
@@ -59,6 +65,7 @@ func _move(_delta : float)->void:
 	var basis = $"Head".global_transform.basis;
 	direction += (-input["left"] + input["right"]) * basis.x;
 	direction += (-input["forward"] + input["back"]) * basis.z;
+	emit_signal("player_move")
 	
 	direction.y = 0; direction = direction.normalized()
 	
@@ -82,6 +89,7 @@ func _crouch(_delta : float)->void:
 	
 	if not head.is_colliding():
 		if input["crouch"]:
+			emit_signal("player_crouch")
 			collision.shape.height -= crouch_speed * _delta;
 			normal_speed = crouch_speed_movement;
 		else:
@@ -96,6 +104,7 @@ func _jump(_delta : float)->void:
 	input["jump"] = int(Input.is_action_pressed("jump"));
 	
 	if input["jump"]:
+		emit_signal("player_jump")
 		if is_on_floor():
 			velocity.y = jump_height;
 
@@ -105,6 +114,7 @@ func _sprint(_delta : float)->void:
 	
 	if not input["crouch"]: # If you are not crouching
 		var toggle_speed : float = walk_speed + ((sprint_speed - walk_speed) * input["sprint"])
+		emit_signal("player_sprint")
 		
 		normal_speed = lerp(normal_speed, toggle_speed, 3 * _delta);
 	else:

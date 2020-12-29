@@ -11,6 +11,11 @@ extends Spatial
 
 class_name Gun
 
+# Weapon signals
+signal weapon_fired(weapon_name)
+signal weapon_reloaded(weapon_name, ammo)
+signal weapon_file_read_done()
+
 # Base weapon things
 export var editor_id : String
 export var use_weapon_file : bool = true;
@@ -71,8 +76,10 @@ func _process_gun()->void:
 		transform.origin = transform.origin.linear_interpolate(default_pos, aim_speed)
 
 func check_collision()->void:
+	# Check the collison of the given RayCast
 	if raycast.is_colliding():
 		var collider = raycast.get_collider();
+		# If the collider is in group, enemies, delete it
 		if collider.is_in_group("Enemies"):
 			collider.queue_free();
 		else:
@@ -81,16 +88,22 @@ func check_collision()->void:
 func fire()->void:
 	print("Fired weapon " + weapon_name);
 	can_fire = false;
+	# Removes 1 ammo from the weapon
 	current_ammo -= 1;
+	
+	# Emits the, weapon_fired, signal for use for anything
+	emit_signal("weapon_fired", weapon_name);
+	
+	# Creates a timers for the firerate
 	yield(get_tree().create_timer(fire_rate), "timeout");
-	can_fire = true
+	can_fire = true;
 
 func reload()->void:
 	reloading = true;
-	print("Reloading weapon " + weapon_name)
+	print("Reloading weapon " + weapon_name);
 	yield(get_tree().create_timer(reload_rate), "timeout");
 	current_ammo = clip_size;
-	print("Done reloading weapon " + weapon_name)
+	print("Done reloading weapon " + weapon_name);
 	reloading = false;
 
 # Reads the .weapon file given to it.
@@ -98,21 +111,22 @@ func _read_weapon_file(weaponfile)->void:
 	var config = ConfigFile.new();
 	var err = config.load(weaponfile);
 	
-	var weapon_file_type = config.get_value("Weapon", "type");
+	var weapon_file_type = config.get_value("Weapon", "sType");
 	
 	if use_weapon_file == true:
 		# If type in the .weapon file is gun, then read the variables in the file, else, print an error
 		if weapon_file_type == "gun":
 			if err == OK: # If not, something went wrong with the file loading
-				weapon_name = config.get_value("Weapon", "name");
-				fire_rate = config.get_value("Weapon", "firerate");
-				hold_fire_rate = config.get_value("Weapon", "holdfirerate");
-				clip_size = config.get_value("Weapon", "clipsize");
-				reload_rate = config.get_value("Weapon", "reloadrate");
-				damage = config.get_value("Weapon", "damage");
-				default_pos = config.get_value("Weapon", "default_pos");
-				aim_pos = config.get_value("Weapon", "aim_pos");
-				aim_speed = config.get_value("Weapon", "aim_speed");
+				weapon_name = config.get_value("Weapon", "sName");
+				fire_rate = config.get_value("Weapon", "fFirerate");
+				hold_fire_rate = config.get_value("Weapon", "fHoldFireRate");
+				clip_size = config.get_value("Weapon", "iClipSize");
+				reload_rate = config.get_value("Weapon", "fReloadRate");
+				damage = config.get_value("Weapon", "fDamage");
+				default_pos = config.get_value("Weapon", "v3DefaultPos");
+				aim_pos = config.get_value("Weapon", "v3AimPos");
+				aim_speed = config.get_value("Weapon", "fAimSpeed");
+				emit_signal("weapon_file_read_done");
 			else:
 				print("Something went wrong loading file " + weapon_file);
 		else:

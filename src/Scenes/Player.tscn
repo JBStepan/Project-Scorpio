@@ -42,19 +42,17 @@ gun2_path = NodePath("Gun2/Basic-Gun-2-Debug")
 
 [node name="Basic-Gun-1-Debug" parent="Head/Weapons/Gun1" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029, 0.011, -0.014 )
-weapon_file = "res://Weapons/Guns/Rifles/Basic-Gun-1.weapon"
 fire_rate = 0.0
 clip_size = 0
 reload_rate = 0.0
 damage = 0.0
-aim_pos = Vector3( -0.628, 0.289, 0.805 )
-aim_speed = 0.2
+raycast_path = NodePath("")
+weapon_name = ""
 
 [node name="Gun2" type="Spatial" parent="Head/Weapons"]
 
 [node name="Basic-Gun-2-Debug" parent="Head/Weapons/Gun2" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045, -0.329, 0.466 )
-visible = false
 weapon_file = "res://Weapons/Guns/Rifles/Basic-Gun-2.weapon"
 fire_rate = 0.2
 clip_size = 5
