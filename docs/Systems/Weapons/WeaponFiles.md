@@ -2,27 +2,34 @@
 In Triside we use `.weapon` files to define the variables of a weapon like, damage or the name. The structure of `.weapon` files are as follow
 ```ini
 [Weapon]
-type = "gun"
-name = "Basic Gun 1"
-debugname = "basicgun1"
-firerate = 1
-holdfirerate = 0
-clipsize = 3
-reloadrate = 1.5
-damage = 10
+sType = "gun"
+sDebugName = "basicgun1"
+sName = "Basic Gun 1"
+fFirerate = 1
+fHoldFireRate = 0
+iClipSize = 3
+fReloadRate = 1.5
+fDamage = 10
+; Aiming
+v3DefaultPos = Vector3(0, 0, 0)
+v3AimPos = Vector3(-0.628, 0.289, 0.805)
+fAimSpeed = 0.3
 ```
 
-- `type` - Is the type of weapon Triside will read it has. There are 2 types right now, `gun` and `melee`.
-- `name` - Is the name of the weaon, or common name. This is the name that will be displaied to the player.
-- `debugname` - Is the name of the weapon used in scripts and by the Game.
+- `sType` - Is the type of weapon Triside will read it has. There are 2 types right now, `gun` and `melee`.
+- `sName` - Is the name of the weaon, or common name. This is the name that will be displaied to the player.
+- `sDebugName` - Is the name of the weapon used in scripts and by the Game.
 
 ### Type specific keys
 - Gun
-  - `firerate` - How fast you can fire the weapon. Used in scripts.
-  - `holdfirerate` - How fast you can fire the weapon when you hold it down. Currently not used.
-  - `clipsize` - The clip size of the weapon.
-  - `reloadrate` - How fast the weapon reloads.
-  - `damage` - The amount of damage the weapon does.
+  - `fDirerate` - How fast you can fire the weapon. Used in scripts.
+  - `fHoldFireRate` - How fast you can fire the weapon when you hold it down. Currently not used.
+  - `iClipSize` - The clip size of the weapon.
+  - `fReloadRate` - How fast the weapon reloads.
+  - `fDamage` - The amount of damage the weapon does.
+  - `v3DefaultPos` - The default postion of the weapon.
+  - `v3AimPos` - The aim postion of the weapon.
+  - `fAimSpeed` - How fast you want the weapon to aim.
 - Melee
   - TBD
 
