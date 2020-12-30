@@ -13,11 +13,7 @@ export var player_path : NodePath;
 export var cam_path : NodePath;
 export var sensitivity : float = 0.2;
 export var captured : bool = true;
-export var gun1_path : NodePath;
-export var gun2_path : NodePath;
 
-var gun1;
-var gun2;
 var player;
 var cam : Camera;
 
@@ -25,11 +21,6 @@ var current_weapon = 1;
 
 var player_inputs : Dictionary = {};
 
-func _ready() -> void:
-	player = get_node(player_path);
-	cam = get_node(cam_path);
-	gun1 = get_node(gun1_path);
-	gun2 = get_node(gun2_path);
 
 func _physics_process(_delta) -> void:
 	# Calls function to switch between locked and unlocked mouse

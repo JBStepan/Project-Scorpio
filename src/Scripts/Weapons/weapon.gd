@@ -27,11 +27,12 @@ export var reload_rate : float;
 export var damage : float;
 export var can_hold : bool;
 export var raycast_path : NodePath;
+export var anim_path : NodePath;
 
 # Aiming
 export var default_pos : Vector3;
 export var aim_pos : Vector3;
-export var aim_speed : float;
+export var aim_speed : float = 1;
 
 # Enums
 enum WeaponType { RIFLE, SNIPER, SMG, LMG, PISTOL }
@@ -49,6 +50,7 @@ var reloading = false;
 var is_aiming = false;
 
 var raycast : RayCast;
+var anim : AnimationPlayer;
 
 func _ready()->void:
 	if weapon_file != "":
@@ -58,6 +60,7 @@ func _ready()->void:
 	
 	current_ammo = clip_size;
 	raycast = get_node(raycast_path);
+	anim = get_node(anim_path)
 	
 func _process_gun()->void:
 	if Input.is_action_just_pressed("fire") and can_fire:
@@ -71,8 +74,10 @@ func _process_gun()->void:
 	
 	# Aiming
 	if Input.is_action_pressed("aim"):
+		is_aiming = true
 		transform.origin = transform.origin.linear_interpolate(aim_pos, aim_speed)
 	else:
+		is_aiming = false
 		transform.origin = transform.origin.linear_interpolate(default_pos, aim_speed)
 
 func check_collision()->void:
@@ -86,23 +91,30 @@ func check_collision()->void:
 			print("Hit Nothing!");
 
 func fire()->void:
-	print("Fired weapon " + weapon_name);
-	can_fire = false;
-	# Removes 1 ammo from the weapon
-	current_ammo -= 1;
-	
-	# Emits the, weapon_fired, signal for use for anything
-	emit_signal("weapon_fired", weapon_name);
-	
-	# Creates a timers for the firerate
-	yield(get_tree().create_timer(fire_rate), "timeout");
-	can_fire = true;
+	if reloading == true:
+		print("Fired weapon " + weapon_name);
+		can_fire = false;
+		# Removes 1 ammo from the weapon
+		current_ammo -= 1;
+		
+		anim.play("fired")
+		if !is_aiming:
+			anim.play("fired_aim")
+		# Emits the, weapon_fired, signal for use for anything
+		emit_signal("weapon_fired", weapon_name);
+		
+		# Creates a timers for the firerate
+		yield(get_tree().create_timer(fire_rate), "timeout");
+		can_fire = true;
+	else:
+		print("Unable to fire while reloading")
 
 func reload()->void:
 	reloading = true;
 	print("Reloading weapon " + weapon_name);
 	yield(get_tree().create_timer(reload_rate), "timeout");
 	current_ammo = clip_size;
+	emit_signal("weapon_reloaded", current_ammo)
 	print("Done reloading weapon " + weapon_name);
 	reloading = false;
 

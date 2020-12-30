@@ -9,5 +9,5 @@ fReloadRate = 0.2
 fDamage = 10
 ; Aiming
 v3DefaultPos = Vector3(-0.045, -0.329, 0.466)
-v3AimPos = Vector3(-0.629, -0.051, 1.172)
+v3AimPos = Vector3(-0.671, 0.108, 1.025)
 fAimSpeed = 0.2

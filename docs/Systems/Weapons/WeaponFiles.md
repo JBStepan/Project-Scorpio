@@ -32,6 +32,16 @@ fAimSpeed = 0.3
   - `fAimSpeed` - How fast you want the weapon to aim.
 - Melee
   - TBD
+  
+### Variable Types
+Before all variables in the file make sure to tell what the variable type is.
+	- `int` - `iVariable`
+	- `float` - `fVariable`
+	- `string` - `sVariable`
+	- `bool` - `bVariable`
+	- `Vector3` - `v3Variable`
+	- `Vector2` - `v2Variable`
+Make sure to captialize the first letter of the variable name
 
 ### How `.weapon` files interact with the game
   `.weapon` files interact with the game by overriding any defined variables in the editor. For example,<br>

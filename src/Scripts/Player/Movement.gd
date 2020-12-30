@@ -65,7 +65,7 @@ func _move(_delta : float)->void:
 	var basis = $"Head".global_transform.basis;
 	direction += (-input["left"] + input["right"]) * basis.x;
 	direction += (-input["forward"] + input["back"]) * basis.z;
-	emit_signal("player_move")
+	
 	
 	direction.y = 0; direction = direction.normalized()
 	
@@ -79,6 +79,7 @@ func _move(_delta : float)->void:
 	
 	# Calls the motion function by passing the velocity vector
 	velocity = move_and_slide(velocity, Vector3(0, 1, 0), false, 4, PI/4, false);
+	emit_signal("player_move")
 
 func _crouch(_delta : float)->void:
 	input["crouch"] = int(Input.is_action_pressed("crouch"));
