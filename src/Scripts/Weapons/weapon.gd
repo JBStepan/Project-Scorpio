@@ -12,8 +12,8 @@ extends Spatial
 class_name Gun
 
 # Weapon signals
-signal weapon_fired(weapon_name)
-signal weapon_reloaded(weapon_name, ammo)
+signal weapon_fired(weaponname)
+signal weapon_reloaded(weaponname, ammo, ammo_left)
 signal weapon_file_read_done()
 
 # Base weapon things
@@ -22,7 +22,8 @@ export var use_weapon_file : bool = true;
 export(String, FILE, '*.weapon') var weapon_file
 export var fire_rate : float;
 export var hold_fire_rate : float;
-export var clip_size :int;
+export var clip_size : int;
+export var ammo : int;
 export var reload_rate : float;
 export var damage : float;
 export var can_hold : bool;
@@ -62,7 +63,7 @@ func _ready()->void:
 	raycast = get_node(raycast_path);
 	anim = get_node(anim_path)
 	
-func _process_gun()->void:
+func _process_weapon()->void:
 	if Input.is_action_just_pressed("fire") and can_fire:
 		if current_ammo > 0 and not reloading:
 			fire();
@@ -91,15 +92,17 @@ func check_collision()->void:
 			print("Hit Nothing!");
 
 func fire()->void:
-	if reloading == true:
+	if !reloading:
 		print("Fired weapon " + weapon_name);
 		can_fire = false;
 		# Removes 1 ammo from the weapon
 		current_ammo -= 1;
 		
-		anim.play("fired")
-		if !is_aiming:
+		
+		if is_aiming == true:
 			anim.play("fired_aim")
+		else:
+			anim.play("fired")
 		# Emits the, weapon_fired, signal for use for anything
 		emit_signal("weapon_fired", weapon_name);
 		
@@ -112,9 +115,16 @@ func fire()->void:
 func reload()->void:
 	reloading = true;
 	print("Reloading weapon " + weapon_name);
-	yield(get_tree().create_timer(reload_rate), "timeout");
-	current_ammo = clip_size;
-	emit_signal("weapon_reloaded", current_ammo)
+	anim.play("reload", 0, reload_rate)
+	
+	for i in ammo:
+		current_ammo += 1;
+		ammo -= 1;
+		
+		if current_ammo >= clip_size:
+			break
+
+	emit_signal("weapon_reloaded", weapon_name,current_ammo, ammo)
 	print("Done reloading weapon " + weapon_name);
 	reloading = false;
 
@@ -133,6 +143,7 @@ func _read_weapon_file(weaponfile)->void:
 				fire_rate = config.get_value("Weapon", "fFirerate");
 				hold_fire_rate = config.get_value("Weapon", "fHoldFireRate");
 				clip_size = config.get_value("Weapon", "iClipSize");
+				ammo = config.get_value("Weapon", "iAmmo");
 				reload_rate = config.get_value("Weapon", "fReloadRate");
 				damage = config.get_value("Weapon", "fDamage");
 				default_pos = config.get_value("Weapon", "v3DefaultPos");

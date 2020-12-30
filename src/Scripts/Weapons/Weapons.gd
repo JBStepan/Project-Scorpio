@@ -32,18 +32,14 @@ func weapon_select():
 
 	if current_weapon == 1:
 		gun1.visible = true
-		if(gun1.has_method("_process_gun")):
-			gun1._process_gun();
-		else:
-			print("Unable to find weapon method")
+		if(gun1.has_method("_process_weapon")):
+			gun1._process_weapon();
 	else:
 		gun1.visible = false
 
 	if current_weapon == 2:
 		gun2.visible = true
-		if(gun2.has_method("_process_gun")):
-			gun2._process_gun();
-		else:
-			print("Unable to find weapon method")
+		if(gun2.has_method("_process_weapon")):
+			gun2._process_weapon();
 	else:
 		gun2.visible = false

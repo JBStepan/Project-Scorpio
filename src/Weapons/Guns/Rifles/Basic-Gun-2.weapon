@@ -2,10 +2,11 @@
 sType = "gun"
 sDebugName = "basicgun2"
 sName = "Coke"
-fFirerate = 1.3
+fFirerate = 0.5
 fHoldFireRate = 0
-iClipSize = 2
-fReloadRate = 0.2
+iClipSize = 60
+iAmmo = 128
+fReloadRate = 1.5
 fDamage = 10
 ; Aiming
 v3DefaultPos = Vector3(-0.045, -0.329, 0.466)

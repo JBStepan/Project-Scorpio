@@ -30,6 +30,7 @@ cam_path = NodePath("Neck/Camera")
 [node name="Weapons" type="Spatial" parent="Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.674, -0.654217, -1.38541 )
 script = ExtResource( 5 )
+gun1_path = NodePath("Gun1")
 gun2_path = NodePath("Gun2/Basic-Gun-2-Debug")
 
 [node name="Gun1" type="Spatial" parent="Head/Weapons"]
@@ -37,7 +38,8 @@ gun2_path = NodePath("Gun2/Basic-Gun-2-Debug")
 [node name="Gun2" type="Spatial" parent="Head/Weapons"]
 
 [node name="Basic-Gun-2-Debug" parent="Head/Weapons/Gun2" instance=ExtResource( 6 )]
-weapon_file = "res://Weapons/Guns/Rifles/Basic-Gun-2.weapon"
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.671, 0.108, 1.025 )
+editor_id = "BasicGun1"
 fire_rate = 0.2
 clip_size = 5
 reload_rate = 1.0

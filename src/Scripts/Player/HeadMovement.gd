@@ -25,7 +25,7 @@ var player_inputs : Dictionary = {};
 func _physics_process(_delta) -> void:
 	# Calls function to switch between locked and unlocked mouse
 	_mouse_toggle();
-	_zoom();
+#	_zoom();
 	
 func _mouse_toggle() -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -53,15 +53,15 @@ func _cam_rotate(event) -> void:
 		camera[0].rotation.x = min(camera[0].rotation.x,  deg2rad(max_angle))
 		camera[0].rotation.x = max(camera[0].rotation.x, -deg2rad(max_angle))
 
-func _zoom():
-	player_inputs["zoom"] = int(Input.is_action_pressed("zoom"));
-
-	if player_inputs["zoom"]:
-		cam.fov -= 50;
-		sensitivity = 0.1;
-	else:
-		cam.fov = 70;
-		sensitivity = 0.2;
+#func _zoom():
+#	player_inputs["zoom"] = int(Input.is_action_pressed("zoom"));
+#
+#	if player_inputs["zoom"]:
+#		cam.fov -= 50;
+#		sensitivity = 0.1;
+#	else:
+#		cam.fov = 70;
+#		sensitivity = 0.2;
 	
 
 func _input(_event) -> void:
