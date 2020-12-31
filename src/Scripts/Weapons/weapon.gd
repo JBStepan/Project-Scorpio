@@ -72,6 +72,8 @@ func _ready()->void:
 	fire_sound = get_node(fire_sound_path)
 	reload_sound = get_node(reload_sound_path)
 	
+	self.transform.origin = default_pos;
+	
 func _process_weapon()->void:
 	if Input.is_action_just_pressed("fire") and can_fire:
 		if current_ammo > 0 and not reloading:

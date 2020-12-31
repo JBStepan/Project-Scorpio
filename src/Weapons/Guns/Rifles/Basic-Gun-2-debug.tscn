@@ -7,7 +7,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "fired"
-length = 0.12
+length = 0.06
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:translation")
@@ -16,7 +16,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.04, 0.12 ),
+"times": PoolRealArray( 0, 0.02, 0.06 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( -0.045, -0.329, 0.466 ), Vector3( -0.045, -0.329, 0.509 ), Vector3( -0.045, -0.329, 0.466 ) ]
@@ -24,7 +24,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "fired_aim"
-length = 0.12
+length = 0.06
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:translation")
@@ -33,7 +33,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.06, 0.12 ),
+"times": PoolRealArray( 0, 0.02, 0.06 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( -0.671, 0.108, 1.025 ), Vector3( -0.671, 0.108, 1.055 ), Vector3( -0.671, 0.108, 1.025 ) ]
@@ -57,7 +57,7 @@ tracks/0/keys = {
 }
 
 [node name="Basic-Gun-2-debug" type="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.671, 0.108, 1.055 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.671, 0.108, 1.025 )
 script = ExtResource( 1 )
 editor_id = "BasicGun2"
 weapon_file = "res://Weapons/Guns/Rifles/Basic-Gun-2.weapon"
