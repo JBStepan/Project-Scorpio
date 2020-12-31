@@ -27,8 +27,10 @@ export var ammo : int;
 export var reload_rate : float;
 export var damage : float;
 export var can_hold : bool;
-export var raycast_path : NodePath;
 export var anim_path : NodePath;
+export var raycast_path : NodePath;
+export var fire_sound_path : NodePath;
+export var reload_sound_path : NodePath;
 
 # Aiming
 export var default_pos : Vector3;
@@ -50,18 +52,25 @@ var can_fire = true;
 var reloading = false;
 var is_aiming = false;
 
-var raycast : RayCast;
 var anim : AnimationPlayer;
+var raycast : RayCast;
+var fire_sound : AudioStreamPlayer3D
+var reload_sound : AudioStreamPlayer3D
 
 func _ready()->void:
-	if weapon_file != "":
-		_read_weapon_file(weapon_file)
+	if use_weapon_file == true:
+		if weapon_file != "":
+			_read_weapon_file(weapon_file)
+		else:
+			print("No weapon file defined")
 	else:
-		print("No weapon file defined")
+		print("Not using weapon file")
 	
 	current_ammo = clip_size;
-	raycast = get_node(raycast_path);
+	raycast = get_node(raycast_path)
 	anim = get_node(anim_path)
+	fire_sound = get_node(fire_sound_path)
+	reload_sound = get_node(reload_sound_path)
 	
 func _process_weapon()->void:
 	if Input.is_action_just_pressed("fire") and can_fire:
@@ -90,42 +99,47 @@ func check_collision()->void:
 			collider.queue_free();
 		else:
 			print("Hit Nothing!");
+	else:
+		print("Hit Nothing!")
 
 func fire()->void:
-	if !reloading:
+	if anim.current_animation != "reload":
 		print("Fired weapon " + weapon_name);
 		can_fire = false;
 		# Removes 1 ammo from the weapon
 		current_ammo -= 1;
 		
-		
 		if is_aiming == true:
-			anim.play("fired_aim")
+			anim.play("fired_aim", 0, fire_rate)
+			fire_sound.play(0.0)
 		else:
-			anim.play("fired")
+			anim.play("fired", 0, fire_rate)
+			fire_sound.play(0.0)
+				
 		# Emits the, weapon_fired, signal for use for anything
 		emit_signal("weapon_fired", weapon_name);
 		
-		# Creates a timers for the firerate
-		yield(get_tree().create_timer(fire_rate), "timeout");
 		can_fire = true;
 	else:
-		print("Unable to fire while reloading")
+		print("Can fire while reloading")
 
 func reload()->void:
 	reloading = true;
 	print("Reloading weapon " + weapon_name);
 	anim.play("reload", 0, reload_rate)
+	reload_sound.play(0.0)
 	
 	for i in ammo:
 		current_ammo += 1;
 		ammo -= 1;
-		
+			
 		if current_ammo >= clip_size:
 			break
-
+	
+	yield(get_tree().create_timer(1), "timeout")
+	
 	emit_signal("weapon_reloaded", weapon_name,current_ammo, ammo)
-	print("Done reloading weapon " + weapon_name);
+	print("Done reloading weapon " + weapon_name + " remaining ammo " + str(ammo));
 	reloading = false;
 
 # Reads the .weapon file given to it.

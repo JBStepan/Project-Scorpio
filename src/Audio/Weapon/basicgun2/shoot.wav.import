@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/normal.wav-4ec5b9eac778c2564218f8e9d4b047e1.sample"
+path="res://.import/shoot.wav-f6854f792ea6e9532735bc0f47e62547.sample"
 
 [deps]
 
-source_file="res://Audio/normal.wav"
-dest_files=[ "res://.import/normal.wav-4ec5b9eac778c2564218f8e9d4b047e1.sample" ]
+source_file="res://Audio/Weapon/basicgun2/shoot.wav"
+dest_files=[ "res://.import/shoot.wav-f6854f792ea6e9532735bc0f47e62547.sample" ]
 
 [params]
 

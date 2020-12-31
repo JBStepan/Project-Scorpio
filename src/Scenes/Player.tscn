@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Player/Movement.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player/HeadMovement.gd" type="Script" id=2]
+[ext_resource path="res://Weapons/Guns/Pistols/Basic-Pistol-1-debug.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Weapons/Weapons.gd" type="Script" id=5]
 [ext_resource path="res://Weapons/Guns/Rifles/Basic-Gun-2-debug.tscn" type="PackedScene" id=6]
 
@@ -31,21 +32,15 @@ cam_path = NodePath("Neck/Camera")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.674, -0.654217, -1.38541 )
 script = ExtResource( 5 )
 gun1_path = NodePath("Gun1")
-gun2_path = NodePath("Gun2/Basic-Gun-2-Debug")
+gun2_path = NodePath("Gun2")
 
 [node name="Gun1" type="Spatial" parent="Head/Weapons"]
 
+[node name="Basic-Pistol-1-debug" parent="Head/Weapons/Gun1" instance=ExtResource( 3 )]
+
 [node name="Gun2" type="Spatial" parent="Head/Weapons"]
 
-[node name="Basic-Gun-2-Debug" parent="Head/Weapons/Gun2" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.671, 0.108, 1.025 )
-editor_id = "BasicGun1"
-fire_rate = 0.2
-clip_size = 5
-reload_rate = 1.0
-damage = 0.3
-raycast_path = NodePath("../Basic-Gun-2-Debug/RayCast")
-aim_pos = Vector3( -0.633, -0.057, 1.39 )
+[node name="Basic-Gun-2-debug" parent="Head/Weapons/Gun2" instance=ExtResource( 6 )]
 
 [node name="PlayerUI" type="Control" parent="."]
 anchor_right = 1.0

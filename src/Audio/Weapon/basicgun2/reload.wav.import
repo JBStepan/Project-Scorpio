@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/metal.wav-2d3b34a1fa734045711de567be21ad5b.sample"
+path="res://.import/reload.wav-f6a423eedf7aee57b9de31467d696a43.sample"
 
 [deps]
 
-source_file="res://Audio/metal.wav"
-dest_files=[ "res://.import/metal.wav-2d3b34a1fa734045711de567be21ad5b.sample" ]
+source_file="res://Audio/Weapon/basicgun2/reload.wav"
+dest_files=[ "res://.import/reload.wav-f6a423eedf7aee57b9de31467d696a43.sample" ]
 
 [params]
 
