@@ -17,22 +17,29 @@ signal weapon_reloaded(weaponname, ammo, ammo_left)
 signal weapon_file_read_done()
 
 # Base weapon things
+export var weapon_things : String = "-----------------------"
 export var editor_id : String
 export var use_weapon_file : bool = true;
 export(String, FILE, '*.weapon') var weapon_file
+export var weapon_variables : String = "-----------------------"
 export var fire_rate : float;
+export var wait_time : float;
+export var hold_fire_variables : String = "-----------------------"
+export var can_hold : bool;
 export var hold_fire_rate : float;
 export var clip_size : int;
 export var ammo : int;
 export var reload_rate : float;
 export var damage : float;
-export var can_hold : bool;
+
+export var node_paths : String = "-----------------------"
 export var anim_path : NodePath;
 export var raycast_path : NodePath;
 export var fire_sound_path : NodePath;
 export var reload_sound_path : NodePath;
 
 # Aiming
+export var aiming : String = "-----------------------"
 export var default_pos : Vector3;
 export var aim_pos : Vector3;
 export var aim_speed : float = 1;
@@ -41,6 +48,7 @@ export var aim_speed : float = 1;
 enum WeaponType { RIFLE, SNIPER, SMG, LMG, PISTOL }
 enum Rarity { COMMON, UNCOMMON, RARE, ULTIMATE, LEGENDARY, EXOTIC }
 
+export var triside_variables : String = "-----------------------"
 # Triside Vars
 export(WeaponType) var weapon_type;
 export(Rarity) var rarity;
@@ -72,15 +80,20 @@ func _ready()->void:
 	fire_sound = get_node(fire_sound_path)
 	reload_sound = get_node(reload_sound_path)
 	
+	# Sets the postion of the weapon to the given defualt postion
 	self.transform.origin = default_pos;
 	
 func _process_weapon()->void:
-	if Input.is_action_just_pressed("fire") and can_fire:
-		if current_ammo > 0 and not reloading:
-			fire();
-		elif not reloading:
-			reload();
-	
+	if Input.is_action_just_pressed("fire"):
+		# Stops people from spam clicking
+		if can_fire == true:
+			if current_ammo > 0 and not reloading:
+				fire();
+				
+			elif not reloading:
+				reload();
+		else:
+			pass
 	if Input.is_action_just_pressed("reload") and not reloading and current_ammo < clip_size:
 		reload();
 	
@@ -117,10 +130,11 @@ func fire()->void:
 		else:
 			anim.play("fired", 0, fire_rate)
 			fire_sound.play(0.0)
-				
-		# Emits the, weapon_fired, signal for use for anything
+		
+		# Emits the, weapon_fired, signal use for anything
 		emit_signal("weapon_fired", weapon_name);
 		
+		yield(get_tree().create_timer(wait_time), "timeout")
 		can_fire = true;
 	else:
 		print("Can fire while reloading")
@@ -172,3 +186,4 @@ func _read_weapon_file(weaponfile)->void:
 			print("Weapon type is not accepted!");
 	else:
 		print("Not using .weapon file")
+

@@ -1,7 +1,7 @@
 [Weapon]
 sType = "gun"
 sName = "Coke"
-fFirerate = 0.5
+fFirerate = 0.2
 fHoldFireRate = 0
 iClipSize = 60
 iAmmo = 128
