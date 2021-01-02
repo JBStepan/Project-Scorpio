@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scripts/Weapons/weapon.gd" type="Script" id=1]
+[ext_resource path="res://BaseClasses/weapon.gd" type="Script" id=1]
 [ext_resource path="res://Models/Weapons/Gun/Debug-Gun-1.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://Audio/Weapon/basicgun2/shoot.wav" type="AudioStream" id=3]
 [ext_resource path="res://Audio/Weapon/basicgun2/reload.wav" type="AudioStream" id=4]
@@ -70,22 +70,12 @@ tracks/0/keys = {
 [node name="Basic-Gun-2-debug" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045, -0.329, 0.466 )
 script = ExtResource( 1 )
-editor_id = "BasicGun2"
 weapon_file = "res://Weapons/Guns/Rifles/Basic-Gun-2.weapon"
-fire_rate = 1.3
 wait_time = 0.3
-clip_size = 2
-ammo = 128
-reload_rate = 0.2
-damage = 10.0
-anim_path = NodePath("../Basic-Gun-2-debug/AnimationPlayer")
-raycast_path = NodePath("../Basic-Gun-2-debug/RayCast")
-fire_sound_path = NodePath("../Basic-Gun-2-debug/FireSound")
-reload_sound_path = NodePath("../Basic-Gun-2-debug/ReloadSound")
-default_pos = Vector3( -0.045, -0.329, 0.466 )
-aim_pos = Vector3( -0.671, 0.108, 1.025 )
-aim_speed = 0.2
-weapon_name = "Basic Gun2 - debug"
+anim_path = NodePath("AnimationPlayer")
+raycast_path = NodePath("RayCast")
+fire_sound_path = NodePath("FireSound")
+reload_sound_path = NodePath("ReloadSound")
 
 [node name="RayCast" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00549859, 0.352024, 0.387796 )

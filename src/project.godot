@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Faction",
+"language": "GDScript",
+"path": "res://BaseClasses/Faction.gd"
+}, {
 "base": "Spatial",
 "class": "Gun",
 "language": "GDScript",
-"path": "res://Scripts/Weapons/weapon.gd"
+"path": "res://BaseClasses/weapon.gd"
+}, {
+"base": "Node",
+"class": "NPC",
+"language": "GDScript",
+"path": "res://BaseClasses/NPC.gd"
 }, {
 "base": "Resource",
 "class": "SaveGame",
@@ -20,7 +30,9 @@ _global_script_classes=[ {
 "path": "res://Scripts/SaveGame/SaveGame.gd"
 } ]
 _global_script_class_icons={
+"Faction": "",
 "Gun": "",
+"NPC": "",
 "SaveGame": ""
 }
 

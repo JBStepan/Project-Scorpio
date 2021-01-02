@@ -113,7 +113,8 @@ func check_collision()->void:
 		var collider = raycast.get_collider();
 		# If the collider is in group, enemies, delete it
 		if collider.is_in_group("Enemies"):
-			collider.queue_free();
+			collider.health -= damage;
+			print("Hit enemy for damage " + str(damage))
 		else:
 			print("Hit Nothing!");
 	else:
@@ -132,6 +133,8 @@ func fire()->void:
 		else:
 			anim.play("fired", 0, fire_rate)
 			fire_sound.play(0.0)
+		
+		check_collision()
 		
 		# Emits the, weapon_fired, signal use for anything
 		emit_signal("weapon_fired", weapon_name);
