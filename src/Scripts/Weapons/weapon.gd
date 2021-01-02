@@ -47,11 +47,13 @@ export var aim_speed : float = 1;
 # Enums
 enum WeaponType { RIFLE, SNIPER, SMG, LMG, PISTOL }
 enum Rarity { COMMON, UNCOMMON, RARE, ULTIMATE, LEGENDARY, EXOTIC }
+enum AmmoType { FORTYFIVE, FIFTY, ENERGY, PLASMA, BIO }
 
 export var triside_variables : String = "-----------------------"
 # Triside Vars
 export(WeaponType) var weapon_type;
 export(Rarity) var rarity;
+export(AmmoType) var ammo_type
 export var weapon_name : String;
 export(String, MULTILINE) var weapon_desc
 

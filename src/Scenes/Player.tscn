@@ -42,7 +42,6 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 [node name="Gun2" type="Spatial" parent="Head/Weapons"]
 
 [node name="Basic-Gun-2-debug" parent="Head/Weapons/Gun2" instance=ExtResource( 6 )]
-editor_id = "basicrifle1"
 
 [node name="PlayerUI" type="Control" parent="."]
 anchor_right = 1.0
