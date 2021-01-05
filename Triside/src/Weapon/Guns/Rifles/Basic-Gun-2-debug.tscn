@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/BaseClasses/weapon.gd" type="Script" id=1]
+[ext_resource path="res://Assests/Models/Weapons/Gun/Debug-Gun-1.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Assests/Audio/Weapon/basicgun2/shoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assests/Audio/Weapon/basicgun2/reload.wav" type="AudioStream" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fired"
+length = 0.06
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.06 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.045, -0.329, 0.466 ), Vector3( -0.045, -0.329, 0.509 ), Vector3( -0.045, -0.329, 0.466 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OmniLight:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.01, 0.03 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 6.3, 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fired_aim"
+length = 0.06
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.06 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.671, 0.108, 1.025 ), Vector3( -0.671, 0.108, 1.055 ), Vector3( -0.671, 0.108, 1.025 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "reload"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 8.859, 0, -17.57 ), Vector3( 0, 0, 0 ) ]
+}
+
+[node name="Basic-Gun-2-debug" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045, -0.329, 0.466 )
+script = ExtResource( 1 )
+weapon_file = "res://src/Weapon/Guns/Rifles/Basic-Gun-2.weapon"
+wait_time = 0.3
+anim_path = NodePath("AnimationPlayer")
+raycast_path = NodePath("RayCast")
+fire_sound_path = NodePath("FireSound")
+reload_sound_path = NodePath("ReloadSound")
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00549859, 0.352024, 0.387796 )
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( -0.5, 0, -1.62921e-07, 0, 0.5, 0, 1.62921e-07, 0, -0.5, 0, 0, 0 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+material/13 = null
+material/14 = null
+material/15 = null
+material/16 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fired = SubResource( 1 )
+anims/fired_aim = SubResource( 2 )
+anims/reload = SubResource( 3 )
+
+[node name="FireSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, -2.78181e-08, 0, 2.78181e-08, 1, 0.0105473, 0.643253, -1.57599 )
+stream = ExtResource( 3 )
+emission_angle_degrees = 58.8
+emission_angle_filter_attenuation_db = 0.0
+
+[node name="ReloadSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150938, 0.384324, -0.598584 )
+stream = ExtResource( 4 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0170893, 0.344344, -1.43009 )
+light_energy = 0.0
+omni_range = 0.815832
