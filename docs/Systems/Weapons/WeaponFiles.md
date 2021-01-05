@@ -8,6 +8,7 @@ sName = "Basic Gun 1"
 fFirerate = 1
 fHoldFireRate = 0
 iClipSize = 3
+iAmmo = 100
 fReloadRate = 1.5
 fDamage = 10
 ; Aiming
