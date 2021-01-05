@@ -1,6 +1,6 @@
 ## Current Triside License
 ```
-Copyright (c) JB Stepan. 2020. All rights reserved.
+Copyright (c) JB Stepan. 2021. All rights reserved.
 
 Terms:
 1.) Do not try to recreate Triside using the source code or any other way, without permisson from me.
@@ -14,7 +14,7 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 
 ## Potential Triside License
 ```
-Copyright (c) JB Stepan. 2020. All rights reserved.
+Copyright (c) JB Stepan. 2021. All rights reserved.
 
 Definitions:
   "You/Player/End user" The end user of the product.
@@ -39,7 +39,7 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 ```
 MIT License
 
-Copyright (c) 2020 Droivox
+Copyright (c) 2021 Droivox
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
