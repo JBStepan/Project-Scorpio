@@ -11,6 +11,11 @@ A: The learning experience, its fun and just to see what I can do.<br>
 Q: Why did you pick [Godot](https://godotengine.org/)?<br>
 A: One of the reasons is its very easy to get the hang of, in my opinion. Also with my ADHD, it makes more sense in my brain. Nodes and the hierarchy of them just makes way more sense to me than Unity or Unreal.
 
+### Building Triside
+```
+gdot --windowed --path Triside\src\project.godot --export "Windows Main" builds\12-27-2020\triside.exe
+```
+
 
 The Trello [Board](https://trello.com/b/zjyUZRBZ/triside)<BR>
 Reference: https://github.com/Droivox/Godot-Engine-FPS<br>
