@@ -2,7 +2,7 @@
 # Weapons.gd
 # ------------------
 # Part of the Triside
-# Copyright (c) 2020 JB Stepan. All Rights Reserved
+# Copyright (c) 2021 JB Stepan. All Rights Reserved
 # Licensed under License.txt. License.txt for more info.
 #
 # TODO: Add a 3rd gun, add support for weapons to be added and removed
