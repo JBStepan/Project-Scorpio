@@ -13,7 +13,7 @@ A: One of the reasons is its very easy to get the hang of, in my opinion. Also w
 
 ### Building Triside
 ```
-gdot --windowed --path Triside\src\project.godot --export "Windows Main" builds\12-27-2020\triside.exe
+godot --windowed --path Triside\src\project.godot --export "Windows Main" builds\12-27-2020\triside.exe
 ```
 
 
