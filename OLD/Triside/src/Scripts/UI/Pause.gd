@@ -11,6 +11,8 @@ extends Control
 
 onready var background = $CanvasLayer/ColorRect
 
+signal ExitedGame()
+
 func _ready():
 	pass
 
