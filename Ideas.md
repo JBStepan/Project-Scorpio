@@ -2,7 +2,6 @@
 This is a place for Ideas about Triside and for reference things/documention on diffrect things.
 
 ## Ideas
-- Try to implment a puesdo-ECS
 - Modding!
 
 ## References
