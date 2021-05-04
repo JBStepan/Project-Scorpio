@@ -4,7 +4,6 @@ This is a place for Ideas about Triside and for reference things/documention on 
 ## Ideas
 - Quests - Something like Fallout 4's questing system
 - NPC's - Something like Fallout 4's or Destiny 2's NPC's
-- 
 
 ## References
 - Quest Ref - https://github.com/GDQuest/godot-open-rpg/tree/master/godot/src/quest
