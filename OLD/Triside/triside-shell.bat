@@ -3,12 +3,13 @@
 rem Requirements
 rem Python, Godot 3.2.2 and a copy of Triside source code
 
-echo Triside Shell                                       
-echo Version 1.0.0                                       
-echo Created by JB Stepan                                
-echo Part of the Triside Game                            
-echo Copyright (c) 2020. JB Stepan. All rights reserved. 
-echo ----------------------------------------------------
+echo -------------------------------------------------------
+echo - Triside Shell                                       -
+echo - Version 1.0.0                                       -
+echo - Created by JB Stepan                                -
+echo - Part of the Triside Game                            -
+echo - Copyright (c) 2020. JB Stepan. All rights reserved. -
+echo -------------------------------------------------------
 
 set /p input="Triside Shell > "
 if %input% == --help goto help
