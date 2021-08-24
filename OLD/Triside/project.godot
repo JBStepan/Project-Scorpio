@@ -26,7 +26,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Triside"
+config/name="Project: Danger Zone"
 run/main_scene="res://src/Scenes/World/debug_world.tscn"
 config/icon="res://icon.png"
 config/version="0.0.1"
